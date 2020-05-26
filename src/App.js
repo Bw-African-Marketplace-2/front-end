@@ -18,7 +18,7 @@ const initialFormValues = {
  
   civil: '',
   
-  termsOfUse: false,
+  
     
   
 }
@@ -41,7 +41,7 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  return <div className="App"></div>;
+  return <div className="App">Sign-In and Registration</div>;
 }
 
 export default App;
