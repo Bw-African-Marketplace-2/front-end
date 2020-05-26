@@ -66,6 +66,70 @@ function App() {
       })
   }
 
+  const onInputChange = evt => {
+    const name = evt.target.name
+    const value = evt.target.value
+
+    yup
+      .reach(formSchema, name)
+
+      .validate(value)
+      .then(valid => {
+     
+        setFormErrors({
+          ...formErrors,
+          [name]: ''
+        })
+      })
+      .catch(err => {
+        
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0]
+        })
+      })
+
+
+    setFormValues({
+      ...formValues,
+      [name]: value 
+    })
+  }
+
+
+
+  const onSubmit = evt => {
+    evt.preventDefault()
+
+    const newUser = {
+      username: formValues.username.trim(),
+      special: formValues.special.trim(),
+      size: formValues.size,
+     
+      
+      toppings: Object.keys(formValues.toppings)
+        .filter(topping => formValues.toppings[topping] === true)
+      
+    
+    }
+  
+    postNewUser(newUser)
+    debugger
+  }
+
+  
+  useEffect(() => {
+    getUsers()
+  }, [])
+
+  useEffect(() => {
+    
+    formSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [formValues])
+
 
   return <div className="App">Sign-In and Registration</div>;
 }

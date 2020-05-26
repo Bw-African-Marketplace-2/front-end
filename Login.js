@@ -11,7 +11,7 @@ export default function Login(props) {
      
       disabled,
       errors,
-      onCheckboxChange,
+      
     } = props
   
     return (
