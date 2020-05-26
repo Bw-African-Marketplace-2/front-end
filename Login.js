@@ -2,7 +2,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-export default function Form(props) {
+export default function Login(props) {
 
     const {
       values,

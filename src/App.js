@@ -2,6 +2,8 @@
 
 import "./App.css";
 import React, { useState, useEffect } from 'react';
+import Login from './Login.js';
+import Form from './Form.js';
 
 import axios from 'axios';
 import * as yup from 'yup';
@@ -25,8 +27,7 @@ const initialFormErrors = {
   username: '',
   email: '',
   password: '',
-  role: '',
-  civil: '',
+  
 }
 
 const initialUsers = []
