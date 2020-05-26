@@ -39,6 +39,33 @@ function App() {
  
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+  const getUsers = () => {
+    
+  axios.get('')
+      .then(res => {
+        setUsers(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        debugger
+      })
+  }
+
+  const postNewUser= newUser=> {
+   
+  axios.post('', newUser)
+      .then(res => {
+        setUsers([res.data, ...users])
+        
+      })
+      .catch(err => {
+        debugger
+      })
+      .finally(() => {
+        setFormValues(initialFormValues)
+      })
+  }
+
 
   return <div className="App">Sign-In and Registration</div>;
 }
