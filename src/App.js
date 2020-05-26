@@ -14,9 +14,7 @@ const initialFormValues = {
 
   password: '',
   
-  role: '',
- 
-  civil: '',
+  
   
   
     
