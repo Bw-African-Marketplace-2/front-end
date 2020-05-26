@@ -4,6 +4,8 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import Login from './Login.js';
 import Form from './Form.js';
+import formSchema from './formSchema.js'
+import User from './User.js'
 
 import axios from 'axios';
 import * as yup from 'yup';
@@ -47,7 +49,7 @@ function App() {
         console.log(res.data)
       })
       .catch(err => {
-        debugger
+        //debugger
       })
   }
 
@@ -59,7 +61,7 @@ function App() {
         
       })
       .catch(err => {
-        debugger
+        //debugger
       })
       .finally(() => {
         setFormValues(initialFormValues)
@@ -114,7 +116,7 @@ function App() {
     }
   
     postNewUser(newUser)
-    debugger
+    //debugger
   }
 
   
@@ -130,8 +132,28 @@ function App() {
       })
   }, [formValues])
 
+  debugger;
+  return( <div className="App">Sign-In and Registration
 
-  return <div className="App">Sign-In and Registration</div>;
+    <Form
+    values={formValues}
+    onInputChange={onInputChange}
+    onSubmit={onSubmit}
+
+    disabled={disabled}
+    errors={formErrors}
+   
+    />
+
+  {
+    users.map(user => {
+      return (
+        <User key={user.id} details={user} />
+     )
+    })
+  }
+</div>
+  )
 }
 
 export default App;
