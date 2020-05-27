@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom';
+import api from './auth/api.js';
 
 
 export default function Form(props) {

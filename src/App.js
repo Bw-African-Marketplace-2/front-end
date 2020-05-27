@@ -9,6 +9,14 @@ import User from './User.js'
 import axios from 'axios';
 import * as yup from 'yup';
 
+import {
+  useParams,
+  NavLink,
+  Route,
+  Switch,
+  useRouteMatch,
+} from 'react-router-dom';
+
 
 const initialFormValues = {
  
@@ -128,7 +136,8 @@ function App() {
 
   debugger;
   return( <div className="App">Sign-In and Registration
-
+  <Switch>
+  <Route>
     <Form
     values={formValues}
     onInputChange={onInputChange}
@@ -146,6 +155,9 @@ function App() {
      )
     })
   }
+
+</Route>
+</Switch>
 </div>
   )
 
