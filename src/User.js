@@ -2,28 +2,18 @@ import React from 'react'
 
 function User({ details }) {
     if (!details) {
-      return <h3>Working fetching your friend&apos;s details...</h3>
+      return <h3>Working fetching your user&apos;s details...</h3>
     }
   
     return (
       <div className='friend container'>
         <h2>{details.username}</h2>
-        <p>Special Instructions: {details.special}</p>
+        <p>Email: {details.email}</p>
         
-        <p>Size: {details.size}</p>
+        <p>Password: {details.password}</p>
        
         
   
-        {
-          !!details.toppings && !!details.toppings.length &&
-          <div>
-            Toppings:
-            <ul>
-              {details.toppings.map((topping, idx) => <li key={idx}>{topping}</li>)}
-              
-            </ul>
-          </div>
-        }
       </div>
     )
   }
