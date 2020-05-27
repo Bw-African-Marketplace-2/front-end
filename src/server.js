@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 
-const orders = [
+const users = [
   {
     id: uuid(),
     username: 'Michael',
@@ -19,7 +19,7 @@ const orders = [
 ]
 
 app.get('/users/:id', (req, res) => {
-  const user = users.find(or => or.id === req.params.id)
+  const user = users.find(us => us.id === req.params.id)
   if (!user) {
     res.status(404).json({ message: 'No such order!' })
   }
