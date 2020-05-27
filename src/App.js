@@ -8,6 +8,7 @@ import User from './User.js'
 
 import axios from 'axios';
 import * as yup from 'yup';
+import {Link} from 'react-router-dom'
 
 import {
   useParams,
@@ -136,8 +137,9 @@ function App() {
 
   debugger;
   return( <div className="App">Sign-In and Registration
+  <Link to={'/registration'}>Register Now</Link>
   <Switch>
-  <Route>
+  <Route path='/registration'>
     <Form
     values={formValues}
     onInputChange={onInputChange}
