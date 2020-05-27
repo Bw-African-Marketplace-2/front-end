@@ -21,7 +21,7 @@ const users = [
 app.get('/users/:id', (req, res) => {
   const user = users.find(us => us.id === req.params.id)
   if (!user) {
-    res.status(404).json({ message: 'No such order!' })
+    res.status(404).json({ message: 'No such user' })
   }
   else {
     res.json(user)
