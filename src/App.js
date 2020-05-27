@@ -1,5 +1,4 @@
 
-
 import "./App.css";
 import React, { useState, useEffect } from 'react';
 import Login from './Login.js';
@@ -17,12 +16,7 @@ const initialFormValues = {
   email: '',
 
   password: '',
-  
-  
-  
-  
-    
-  
+ 
 }
 
 const initialFormErrors = {
@@ -43,7 +37,7 @@ function App() {
   const [disabled, setDisabled] = useState(initialDisabled);
   const getUsers = () => {
     
-  axios.get('')
+  axios.get('http://localhost:3000/users')
       .then(res => {
         setUsers(res.data)
         console.log(res.data)
@@ -55,7 +49,7 @@ function App() {
 
   const postNewUser= newUser=> {
    
-  axios.post('', newUser)
+  axios.post('http://localhost:3000/users', newUser)
       .then(res => {
         setUsers([res.data, ...users])
         
@@ -105,12 +99,11 @@ function App() {
 
     const newUser = {
       username: formValues.username.trim(),
-      special: formValues.special.trim(),
-      size: formValues.size,
+      email: formValues.email.trim(),
+      password: formValues.size,
      
       
-      toppings: Object.keys(formValues.toppings)
-        .filter(topping => formValues.toppings[topping] === true)
+      
       
     
     }

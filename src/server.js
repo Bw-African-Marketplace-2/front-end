@@ -3,7 +3,7 @@ const uuid = require('uuid').v4
 const cors = require('cors')
 const app = express()
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(cors())
@@ -12,42 +12,37 @@ const orders = [
   {
     id: uuid(),
     username: 'Michael',
-    special: 'warm',
-    size: 'Large',
-    toppings: [
-      'mushrooms',
-      'pineapples',
-      'salami',
-      'jalapenos'
-    ],
+    email: 'lr@lr.com',
+    password: 'Large',
+   
   },
 ]
 
-app.get('/orders/:id', (req, res) => {
-  const order = orders.find(or => or.id === req.params.id)
-  if (!order) {
+app.get('/users/:id', (req, res) => {
+  const user = users.find(or => or.id === req.params.id)
+  if (!user) {
     res.status(404).json({ message: 'No such order!' })
   }
   else {
-    res.json(order)
+    res.json(user)
   }
 })
 
-app.get('/orders', (req, res) => {
-  res.json(orders)
+app.get('/users', (req, res) => {
+  res.json(users)
 })
 
-app.post('/orders', (req, res) => {
-  const { username, special, size} = req.body
-  const requiredFields = { username, special, size }
+app.post('/users', (req, res) => {
+  const { username, email, password} = req.body
+  const requiredFields = { username, email, password }
 
   if (Object.values(requiredFields).some(field => (!field || !field.trim()))) {
     res.status(400).json({ message: 'Some required fields are missing or invalid.' })
   }
   else {
-    const newOrder = { id: uuid(), ...req.body }
-    orders.push(newOrder)
-    res.status(200).json(newOrder)
+    const newUser = { id: uuid(), ...req.body }
+    orders.push(newUser)
+    res.status(200).json(newUser)
   }
 })
 

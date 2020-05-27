@@ -21,15 +21,15 @@ export default function Form(props) {
       <form className='form container' onSubmit={onSubmit}>
         <div className='form-group submit'>
         
-          <h2>Create your Pizza</h2>
+          <h2>Register</h2>
   
          
-          <button disabled={disabled}>Add to Order</button>
+          
   
           <div className='errors'>
             
             <div>{errors.username}</div>
-            <div>{errors.special}</div>
+            <div>{errors.email}</div>
            
             <div>{errors.role}</div>
             
@@ -51,9 +51,9 @@ export default function Form(props) {
   
           <label>Email
             <input
-              value={values.special}
+              value={values.email}
               onChange={onInputChange}
-              name='special'
+              name='email'
               type='email'
             />
           </label>
@@ -78,7 +78,7 @@ export default function Form(props) {
   
        
   
-         
+        <button disabled={disabled}>Register</button>
         </div>
       </form>
      
