@@ -11,10 +11,15 @@ export default function Product({ details }) {
   
 
       {
-        !!details.products && !!details.products.length &&
+        
         <div>
-          Product
+          
+          <h2>{details.product_name}</h2>
+          <img src={details.image}/>
+          <p>Price: {details.price}</p>
+        
         </div>
+        
       }
     </div>
     )
