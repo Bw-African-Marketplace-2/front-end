@@ -3,6 +3,18 @@ import {api} from './auth/api.js';
 import Product from './Product.js';
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import styled from 'styled-components'
+
+const StyledProducts = styled.div`
+.products {
+    display: flex;
+    
+  }
+  
+
+  
+
+`
 
 const initialProducts = [{description: "Beautiful fresh farmed brown eggs.",
 id: 1,
@@ -35,6 +47,7 @@ export default function Cards() {
     }, [])
     debugger;
     return(
+      <StyledProducts>
       <div className='products'>
     {
       products.map(product => {
@@ -44,5 +57,6 @@ export default function Cards() {
       })
     }
     </div>
+    </StyledProducts>
     )
 }
