@@ -5,9 +5,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 const StyledProducts = styled.div`
-.html{
-  font-size: 62.5%;
-}
+
 .products {
   display: flex; 
   
@@ -19,6 +17,7 @@ const StyledProducts = styled.div`
     
 
 .header nav{
+    font-family: 'Open Sans Condensed', sans-serif;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -31,10 +30,10 @@ const StyledProducts = styled.div`
 }
 
 .header nav a{
-  font-size: 1.6 rem;
+  font-size: 1.0 rem;
   text-decoration: none;
   color: #edf2f4;
-  padding: 20px;
+  padding: 0 3rem;
   
 }
 
