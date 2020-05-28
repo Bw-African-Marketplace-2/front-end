@@ -8,7 +8,7 @@ import { api } from "./auth/api";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import useForm from "react-hook-form";
 
 const initialFormValues = {
   username: "",
@@ -121,6 +121,7 @@ function App() {
       {users.map((user) => {
         return <User key={user.id} details={user} />;
       })}
+      <Login />
     </div>
   );
 }
