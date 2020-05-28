@@ -4,6 +4,7 @@ import Login from './Login.js';
 import Form from './Form.js';
 import formSchema from './formSchema.js'
 import User from './User.js'
+import Cards from './Cards.js'
 
 
 
@@ -54,6 +55,7 @@ function App() {
     api()
       .post("/api/auth/register", newUser)
       .then((res) => {
+        localStorage.setItem("token", res.data.token);
         console.log(res);
          
       })
@@ -132,6 +134,11 @@ function App() {
   <Route path='/login'>
     <Login />
   </Route>
+
+  <Route path='/cards'>
+    <Cards />
+  </Route>
+
   </Switch>
 
 
