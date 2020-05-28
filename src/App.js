@@ -40,7 +40,7 @@ const initialUsers = [];
 const initialDisabled = true;
 
 function App() {
-  const [users, setUsers] = useState(initialUsers);
+  
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -48,27 +48,17 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const getUsers = () => {
-    api()
-      .get("http://localhost:3000/users")
-      .then((res) => {
-        setUsers(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        //debugger
-      });
-  };
+  
 
   const postNewUser = (newUser) => {
     api()
       .post("/api/auth/register", newUser)
       .then((res) => {
         console.log(res);
-        // setUsers([res.data, ...users]);
+         
       })
       .catch((err) => {
-        //debugger
+        debugger
       })
       .finally(() => {
         setFormValues(initialFormValues);
@@ -111,10 +101,7 @@ function App() {
     postNewUser(newUser);
     //debugger
   };
-  useEffect(() => {
-    getUsers();
-  }, []);
-
+ 
   useEffect(() => {
     
     formSchema.isValid(formValues)
@@ -123,7 +110,7 @@ function App() {
       })
   }, [formValues])
 
-  debugger;
+  //debugger;
   return( <div className="App">Sign-In and Registration
   
   <Switch>
@@ -138,21 +125,18 @@ function App() {
    
     />
 
-  {
-    users.map(user => {
-      return (
-        <User key={user.id} details={user} />
-     )
-    })
-  }
+  
 
-</Route>
-</Switch>
-<Switch>
-<Route path='/login'>
-<Login />
-</Route>
-</Switch>
+  </Route>
+
+  <Route path='/login'>
+    <Login />
+  </Route>
+  </Switch>
+
+
+
+
 
 </div>
   )
