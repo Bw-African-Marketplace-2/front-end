@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { api } from "./auth/api";
+import { useDispatch } from "react-redux";
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from "./reducers/actions";
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is Required"),
@@ -14,16 +16,22 @@ export default function Login(props) {
   const { register, handleSubmit, errors, getValues } = useForm({
     validationSchema: schema,
   });
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
+    dispatch({ type: LOGIN_START });
     const values = getValues();
     api()
       .post("/api/auth/login", values)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        dispatch({ type: LOGIN_FAIL, payload: err });
+        console.log(err);
+      });
   };
 
   return (

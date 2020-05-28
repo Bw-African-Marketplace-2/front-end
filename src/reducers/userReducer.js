@@ -2,6 +2,7 @@ import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from "./actions";
 
 const initialState = {
   user: {
+    id: "",
     username: "",
     first_name: "",
     last_name: "",
@@ -21,7 +22,7 @@ export function userReducer(state = initialState, action) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
         loading: false,
       };
     case LOGIN_FAIL:
