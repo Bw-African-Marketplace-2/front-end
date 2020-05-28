@@ -1,15 +1,14 @@
 import "./App.css";
-import React, { useState, useEffect } from 'react';
-import Login from './Login.js';
-import Form from './Form.js';
-import formSchema from './formSchema.js'
-import User from './Product.js'
-import Cards from './Cards.js'
+import React, { useState, useEffect } from "react";
+import Login from "./Login.js";
+import Form from "./Form.js";
+import formSchema from "./formSchema.js";
+import User from "./Product.js";
+import Cards from "./Cards.js";
+import { ProtectedRoute } from "./auth/ProtectedRoute";
 
-
-
-import {Link} from 'react-router-dom'
-import {api} from './auth/api.js';
+import { Link } from "react-router-dom";
+import { api } from "./auth/api.js";
 
 import {
   useParams,
@@ -17,8 +16,8 @@ import {
   Route,
   Switch,
   useRouteMatch,
-} from 'react-router-dom';
-
+  useHistory,
+} from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -41,30 +40,26 @@ const initialUsers = [];
 const initialDisabled = true;
 
 function App() {
-  
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-
-  const dispatch = useDispatch();
-
-  
-
+  const history = useHistory();
   const postNewUser = (newUser) => {
     api()
       .post("/api/auth/register", newUser)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        history.push("/login");
         console.log(res);
-         
       })
       .catch((err) => {
-        debugger
-      })
-      .finally(() => {
-        setFormValues(initialFormValues);
+        debugger;
       });
+    // .finally(() => {
+    //   setFormValues(initialFormValues);
+
+    // });
   };
 
   const onInputChange = (evt) => {
@@ -103,51 +98,36 @@ function App() {
     postNewUser(newUser);
     //debugger
   };
- 
+
   useEffect(() => {
-    
-    formSchema.isValid(formValues)
-      .then(valid => {
-        setDisabled(!valid)
-      })
-  }, [formValues])
+    formSchema.isValid(formValues).then((valid) => {
+      setDisabled(!valid);
+    });
+  }, [formValues]);
 
   //debugger;
-  return( <div className="App">Sign-In and Registration
-  
-  <Switch>
-  <Route path='/registration'>
-    <Form
-    values={formValues}
-    onInputChange={onInputChange}
-    onSubmit={onSubmit}
+  return (
+    <div className="App">
+      Sign-In and Registration
+      <Switch>
+        <Route exact path="/">
+          <Form
+            values={formValues}
+            onInputChange={onInputChange}
+            onSubmit={onSubmit}
+            disabled={disabled}
+            errors={formErrors}
+          />
+        </Route>
 
-    disabled={disabled}
-    errors={formErrors}
-   
-    />
+        <Route path="/login">
+          <Login />
+        </Route>
 
-  
-
-  </Route>
-
-  <Route path='/login'>
-    <Login />
-  </Route>
-
-  <Route path='/cards'>
-    <Cards />
-  </Route>
-
-  </Switch>
-
-
-
-
-
-</div>
-  )
-
+        <ProtectedRoute path="/cards" component={Cards} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
