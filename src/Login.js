@@ -37,7 +37,7 @@ export default function Login(props) {
   return (
     <form className="form container" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group submit">
-        {/* <Link to={"/"}> Register</Link> */}
+        
         <h2>Sign In</h2>
 
         <div className="errors">
@@ -68,6 +68,12 @@ export default function Login(props) {
         </label>
       </div>
       <button> Log In </button>
+      <br/>
+      <Link to={'/registration'}>Or Register</Link>
+      <br/>
+      <Link to={"/cards"}> Products </Link>
+      
+      
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
-
+import {Link} from 'react-router-dom';
+import api from './auth/api.js';
+import styled from 'styled-components';
 
 
 export default function Form(props) {
@@ -14,6 +15,8 @@ export default function Form(props) {
       errors,
       onCheckboxChange,
     } = props
+
+    
   
     return (
         

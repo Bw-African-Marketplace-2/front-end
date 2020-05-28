@@ -1,10 +1,25 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import Login from "./Login.js";
-import Form from "./Form.js";
-import formSchema from "./formSchema.js";
-import User from "./User.js";
-import { api } from "./auth/api";
+import React, { useState, useEffect } from 'react';
+import Login from './Login.js';
+import Form from './Form.js';
+import formSchema from './formSchema.js'
+import User from './Product.js'
+import Cards from './Cards.js'
+
+
+
+import {Link} from 'react-router-dom'
+import {api} from './auth/api.js';
+
+import {
+  useParams,
+  NavLink,
+  Route,
+  Switch,
+  useRouteMatch,
+} from 'react-router-dom';
+
+
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import * as yup from "yup";
@@ -26,7 +41,7 @@ const initialUsers = [];
 const initialDisabled = true;
 
 function App() {
-  const [users, setUsers] = useState(initialUsers);
+  
   const [formValues, setFormValues] = useState(initialFormValues);
 
   const [formErrors, setFormErrors] = useState(initialFormErrors);
@@ -34,27 +49,18 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const getUsers = () => {
-    api()
-      .get("http://localhost:3000/users")
-      .then((res) => {
-        setUsers(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        //debugger
-      });
-  };
+  
 
   const postNewUser = (newUser) => {
     api()
       .post("/api/auth/register", newUser)
       .then((res) => {
+        localStorage.setItem("token", res.data.token);
         console.log(res);
-        // setUsers([res.data, ...users]);
+         
       })
       .catch((err) => {
-        //debugger
+        debugger
       })
       .finally(() => {
         setFormValues(initialFormValues);
@@ -97,33 +103,51 @@ function App() {
     postNewUser(newUser);
     //debugger
   };
+ 
   useEffect(() => {
-    getUsers();
-  }, []);
+    
+    formSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [formValues])
 
-  useEffect(() => {
-    formSchema.isValid(formValues).then((valid) => {
-      setDisabled(!valid);
-    });
-  }, [formValues]);
+  //debugger;
+  return( <div className="App">Sign-In and Registration
+  
+  <Switch>
+  <Route path='/registration'>
+    <Form
+    values={formValues}
+    onInputChange={onInputChange}
+    onSubmit={onSubmit}
 
-  // debugger;
-  return (
-    <div className="App">
-      Sign-In and Registration
-      <Form
-        values={formValues}
-        onInputChange={onInputChange}
-        onSubmit={onSubmit}
-        disabled={disabled}
-        errors={formErrors}
-      />
-      {users.map((user) => {
-        return <User key={user.id} details={user} />;
-      })}
-      <Login />
-    </div>
-  );
+    disabled={disabled}
+    errors={formErrors}
+   
+    />
+
+  
+
+  </Route>
+
+  <Route path='/login'>
+    <Login />
+  </Route>
+
+  <Route path='/cards'>
+    <Cards />
+  </Route>
+
+  </Switch>
+
+
+
+
+
+</div>
+  )
+
 }
 
 export default App;
