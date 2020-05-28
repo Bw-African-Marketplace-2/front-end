@@ -60,15 +60,20 @@ export default function Login(props) {
           Username&nbsp;
           <input ref={register} name="username" type="text" />
         </label>
+        <br/>
+        <br/>
         <label>
-          Email
+          Email&nbsp;
           <input ref={register} name="email" type="email" />
         </label>
+        <br/>
+        <br/>
         <label>
-          Password
+          Password&nbsp;
           <input ref={register} name="password" type="password" />
         </label>
       </div>
+      <br/>
       <button> Log In </button>
       <br />
       <Link to={"/"}>Or Register</Link>
