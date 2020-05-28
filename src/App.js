@@ -8,7 +8,7 @@ import User from './User.js'
 
 
 import {Link} from 'react-router-dom'
-import api from './auth/api.js';
+import {api} from './auth/api.js';
 
 import {
   useParams,
@@ -125,7 +125,7 @@ function App() {
 
   debugger;
   return( <div className="App">Sign-In and Registration
-  <Link to={'/registration'}>Register Now</Link>
+  
   <Switch>
   <Route path='/registration'>
     <Form
@@ -148,6 +148,12 @@ function App() {
 
 </Route>
 </Switch>
+<Switch>
+<Route path='/login'>
+<Login />
+</Route>
+</Switch>
+
 </div>
   )
 
