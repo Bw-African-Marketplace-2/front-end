@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './Login.js';
 import Form from './Form.js';
 import formSchema from './formSchema.js'
-import User from './User.js'
+import User from './Product.js'
 import Cards from './Cards.js'
 
 
