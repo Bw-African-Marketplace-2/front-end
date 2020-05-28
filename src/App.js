@@ -108,7 +108,7 @@ function App() {
   //debugger;
   return (
     <div className="App">
-      Sign-In and Registration
+      
       <Switch>
         <Route exact path="/">
           <Form
