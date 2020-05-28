@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { api } from "./auth/api";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from "./reducers/actions";
 
 const schema = yup.object().shape({
@@ -16,6 +17,7 @@ export default function Login(props) {
   const { register, handleSubmit, errors, getValues } = useForm({
     validationSchema: schema,
   });
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const onSubmit = () => {
@@ -26,6 +28,7 @@ export default function Login(props) {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+        history.push("/cards");
         console.log(res);
       })
       .catch((err) => {
@@ -37,7 +40,6 @@ export default function Login(props) {
   return (
     <form className="form container" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group submit">
-        
         <h2>Sign In</h2>
 
         <div className="errors">
@@ -68,12 +70,9 @@ export default function Login(props) {
         </label>
       </div>
       <button> Log In </button>
-      <br/>
-      <Link to={'/registration'}>Or Register</Link>
-      <br/>
-      <Link to={"/cards"}> Products </Link>
-      
-      
+      <br />
+      <Link to={"/"}>Or Register</Link>
+      <br />
     </form>
   );
 }
