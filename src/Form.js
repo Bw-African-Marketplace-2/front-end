@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import api from './auth/api.js';
+import styled from 'styled-components';
 
 
 export default function Form(props) {

@@ -1,4 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledProduct = styled.div`
+.productContainer {
+    width: 500px;
+    
+  }
+  img{
+    width:500px;
+  }
+
+  
+
+`
 
 export default function Product({ details }) {
     if (!details) {
@@ -6,7 +20,8 @@ export default function Product({ details }) {
     }
   
     return (
-      <div className='product container'>
+      <StyledProduct>
+      <div className='productContainer'>
      
       {
         
@@ -20,6 +35,7 @@ export default function Product({ details }) {
         
       }
     </div>
+    </StyledProduct>
     )
   }
   
