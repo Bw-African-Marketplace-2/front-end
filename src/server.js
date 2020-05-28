@@ -28,7 +28,7 @@ app.get('/users/:id', (req, res) => {
   }
 })
 
-app.get('/users', (req, res) => {
+app.get('/users/', (req, res) => {
   res.json(users)
 })
 
