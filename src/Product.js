@@ -8,8 +8,6 @@ export default function Product({ details }) {
     return (
       <div className='product container'>
      
-  
-
       {
         
         <div>
