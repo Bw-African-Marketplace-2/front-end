@@ -19,7 +19,7 @@ export default function Login(props) {
     
       <form className='form container' onSubmit={onSubmit}>
         <div className='form-group submit'>
-        <Link to={'/'}> Register</Link>
+        <Link to={'/resgistration'}> Register</Link>
           <h2>Sign In</h2>
   
          

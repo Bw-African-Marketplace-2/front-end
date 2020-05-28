@@ -9,6 +9,7 @@ import User from './User.js'
 import axios from 'axios';
 import * as yup from 'yup';
 import {Link} from 'react-router-dom'
+import api from './auth/api.js';
 
 import {
   useParams,
