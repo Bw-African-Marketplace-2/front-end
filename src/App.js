@@ -5,7 +5,9 @@ import Form from "./Form.js";
 import formSchema from "./formSchema.js";
 import User from "./Product.js";
 import Cards from "./Cards.js";
+import ProductCard from "./ProductCard";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
+import AddProduct from "./AddProduct";
 
 import { Link } from "react-router-dom";
 import { api } from "./auth/api.js";
@@ -108,7 +110,6 @@ function App() {
   //debugger;
   return (
     <div className="App">
-      
       <Switch>
         <Route exact path="/">
           <Form
@@ -125,6 +126,8 @@ function App() {
         </Route>
 
         <ProtectedRoute path="/cards" component={Cards} />
+        <ProtectedRoute path="/product/:id" component={ProductCard} />
+        <ProtectedRoute path="/new-product" component={AddProduct} />
       </Switch>
     </div>
   );
