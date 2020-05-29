@@ -44,6 +44,9 @@ const Container = styled.div`
   padding: 20px;
   
   }
+  label{
+    font-weight: bold;
+  }
 `;
 
 export default function ProductCard() {

@@ -87,7 +87,6 @@ export default function AddProduct() {
       <h1>Add New Product</h1>
       <br/>
       <br/>
-      <br/>
     <form onSubmit={handleSubmit}>
       <input
         name="product_name"

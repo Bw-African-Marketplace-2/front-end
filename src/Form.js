@@ -4,6 +4,9 @@ import api from "./auth/api.js";
 import styled from "styled-components";
 
 const StyledForm = styled.div`
+.form{
+  font-family:'Barlow', sans-serif;
+}
 .header{
   font-family: 'Barlow', sans-serif;
   background-color: #003049;
@@ -29,6 +32,9 @@ color: #edf2f4;
 padding: 20px;
 
 }
+h3{
+  font-size: 1.5em;
+}
 `
 
 export default function Form(props) {
@@ -44,7 +50,7 @@ export default function Form(props) {
 
   return (
     <StyledForm>
-    <>
+    <div className='form'>
       <form className="form container" onSubmit={onSubmit}>
       <div className='header'>
          <nav>
@@ -54,7 +60,7 @@ export default function Form(props) {
          
         </div> 
         <div className="form-group submit">
-          <h2>Register</h2>
+          <h3>Register</h3>
 
           <div className="errors">
             <div>{errors.username}</div>
@@ -65,7 +71,7 @@ export default function Form(props) {
         </div>
 
         <div className="form-group inputs">
-          <h4>General information</h4>
+          <p>General information</p>
 
           <label>
             Username&nbsp;
@@ -111,7 +117,7 @@ export default function Form(props) {
       </form>
       <h4>Already a Member?</h4>
       <Link to="/login">Login Here</Link>
-    </>
+    </div>
     </StyledForm>
   );
 }

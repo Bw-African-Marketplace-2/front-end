@@ -31,6 +31,9 @@ const StyledLogin = styled.div`
     color: #edf2f4;
     padding: 20px;
   }
+  .signIn{
+    font-family: "Barlow", sans-serif;  
+  }
 `;
 const schema = yup.object().shape({
   username: yup.string().required("Username is Required"),
@@ -65,6 +68,7 @@ export default function Login(props) {
 
   return (
     <StyledLogin>
+      <div className='signIn'>
       <form className="form container" onSubmit={handleSubmit(onSubmit)}>
         <div className="header">
           <nav>
@@ -122,6 +126,7 @@ export default function Login(props) {
         <Link to={"/"}>Or Register</Link>
         <br />
       </form>
+      </div>
     </StyledLogin>
   );
 }
