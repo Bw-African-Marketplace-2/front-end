@@ -5,9 +5,12 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 const StyledProducts = styled.div`
-
+.html{
+  font-family: 'Barlow', sans-serif;
+}
 .products {
   display: flex; 
+  flex-wrap: wrap;
   
 }
 .header{
@@ -36,10 +39,7 @@ const StyledProducts = styled.div`
   padding: 0 3rem;
   
 }
-
-
-
-    
+   
 `
 
 const initialProducts = [{description: "Beautiful fresh farmed brown eggs.",
@@ -82,7 +82,9 @@ export default function Cards() {
          </nav>
          
         </div> 
-    <div className='products'>    
+        <h1>Products for Sale</h1>
+    <div className='products'> 
+       
     {
       products.map(product => {
         return (
