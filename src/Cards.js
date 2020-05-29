@@ -1,19 +1,45 @@
 
 import {api} from './auth/api.js';
 import Product from './Product.js';
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 
 const StyledProducts = styled.div`
+.html{
+  font-family: 'Barlow', sans-serif;
+}
 .products {
-    display: flex;
+  display: flex; 
+  flex-wrap: wrap;
+  
+}
+.header{
+    font-family: 'Barlow', sans-serif;
+    background-color: #003049;
+}     
     
-  }
-  
 
-  
+.header nav{
+    font-family: 'Open Sans Condensed', sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: no-wrap;
+    flex-direction: row;
+    padding: 2% 12%;
+    border-bottom: 0.2rem solid #003049;
+    color: white;
+       
+}
 
+.header nav a{
+  font-size: 1.0 rem;
+  text-decoration: none;
+  color: #edf2f4;
+  padding: 0 3rem;
+  
+}
+   
 `
 
 const initialProducts = [{description: "Beautiful fresh farmed brown eggs.",
@@ -48,7 +74,17 @@ export default function Cards() {
     debugger;
     return(
       <StyledProducts>
-      <div className='products'>
+      <div className='html'>
+       <div className='header'>
+         <nav>
+          <a href="https://africanmarketplace-2.netlify.app/index.html">Home</a>
+          <a href="https://africanmarketplace-2.netlify.app/about.html" target="_blank">About Us</a>
+         </nav>
+         
+        </div> 
+        <h1>Products for Sale</h1>
+    <div className='products'> 
+       
     {
       products.map(product => {
         return (
@@ -56,6 +92,7 @@ export default function Cards() {
         )
       })
     }
+    </div>
     </div>
     </StyledProducts>
     )

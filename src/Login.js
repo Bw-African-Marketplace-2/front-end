@@ -6,7 +6,35 @@ import { api } from "./auth/api";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from "./reducers/actions";
+import styled from 'styled-components';
 
+const StyledLogin = styled.div`
+.header{
+  font-family: 'Barlow', sans-serif;
+  background-color: #003049;
+}     
+  
+
+.header nav{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: no-wrap;
+  flex-direction: row;
+  padding: 2% 12%;
+  border-bottom: 0.2rem solid #003049;
+  color: white;
+     
+}
+
+.header nav a{
+font-size: 1.6 rem;
+text-decoration: none;
+color: #edf2f4;
+padding: 20px;
+
+}
+`
 const schema = yup.object().shape({
   username: yup.string().required("Username is Required"),
   password: yup.string().required("Password is Required"),
@@ -38,7 +66,15 @@ export default function Login(props) {
   };
 
   return (
+    <StyledLogin>
     <form className="form container" onSubmit={handleSubmit(onSubmit)}>
+      <div className='header'>
+         <nav>
+          <a href="https://africanmarketplace-2.netlify.app/index.html">Home</a>
+          <a href="https://africanmarketplace-2.netlify.app/about.html" target="_blank">About Us</a>
+         </nav>
+         
+        </div> 
       <div className="form-group submit">
         <h2>Sign In</h2>
 
@@ -60,19 +96,28 @@ export default function Login(props) {
           Username&nbsp;
           <input ref={register} name="username" type="text" />
         </label>
+        <br/>
+        <br/>
         <label>
-          Email
+          Email&nbsp;
           <input ref={register} name="email" type="email" />
         </label>
+        <br/>
+        <br/>
         <label>
-          Password
+          Password&nbsp;
           <input ref={register} name="password" type="password" />
         </label>
       </div>
+      <br/>
+  
       <button> Log In </button>
-      <br />
+      <br/>
+      <br/>
+
       <Link to={"/"}>Or Register</Link>
       <br />
     </form>
+    </StyledLogin>
   );
 }

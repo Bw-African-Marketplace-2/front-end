@@ -4,11 +4,15 @@ import styled from 'styled-components';
 const StyledProduct = styled.div`
 .productContainer {
     width: 500px;
+    font-family: 'Barlow', sans-serif;
     
   }
   img{
     width:500px;
   }
+  
+  
+
 
   
 
